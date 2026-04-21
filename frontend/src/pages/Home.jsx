@@ -16,6 +16,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import ErrorMessage from '../components/ErrorMessage';
 import { useApi } from '../hooks/useApi';
 import { api, BASE_URL } from '../lib/api';
+import { brand } from '../data/content';
 
 /* ── Counter hook ── */
 function useCountUp(target, duration = 1.4) {
@@ -120,7 +121,7 @@ export default function Home() {
             <MaskText delay={0.7} className="mt-6">
               <p className="flex items-center justify-center gap-2 text-base font-medium tracking-tight text-mint/90 sm:text-xl">
                 <span className="h-px w-6 bg-mint/30" />
-                {tagline}.
+                {brand.tagline}.
                 <span className="h-px w-6 bg-mint/30" />
               </p>
             </MaskText>
@@ -368,7 +369,7 @@ export default function Home() {
         <ScrollReveal>
           <div className="rounded-2xl border border-subtle bg-panel p-10 text-center sm:p-14">
             <p className="mx-auto max-w-3xl font-display text-2xl font-bold leading-snug text-text sm:text-3xl">
-              We are {brandName}.{' '}
+              We are {brand.name}.{' '}
               <span className="text-gradient">We build tech that works.</span>{' '}
               For founders, creators, and businesses who need results — not excuses.
             </p>

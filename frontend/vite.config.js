@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     allowedHosts: true,
     proxy: {
-      '/api': 'http://localhost:8787'
+      '/api': 'http://localhost:8000'
     }
   },
   build: {

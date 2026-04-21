@@ -1,0 +1,11 @@
+class AuditAction:
+    LEAD_CREATED = 'lead_created'
+    LEAD_UPDATED = 'lead_updated'
+    LEAD_DELETED = 'lead_deleted'
+    LEAD_STATUS_CHANGED = 'lead_status_changed'
+    BOOKING_CREATED = 'booking_created'
+    BOOKING_CANCELLED = 'booking_cancelled'
+    USER_ROLE_CHANGED = 'user_role_changed'
+    SUBMISSION_REPLIED = 'submission_replied'
+    SERVICE_CREATED = 'service_created'
+    PROJECT_UPDATED = 'project_updated'

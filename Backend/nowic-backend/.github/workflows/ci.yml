@@ -1,0 +1,64 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [main, backend-dev]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_DB: nowic_test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Cache pip
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: pip-${{ hashFiles('requirements.txt') }}
+      
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      
+      - name: Run linting
+        run: |
+          flake8 . --count --statistics
+          isort --check-only .
+      
+      - name: Run tests
+        env:
+          SECRET_KEY: test-secret-key-for-ci-only
+          DEBUG: True
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/nowic_test
+          CLERK_JWKS_URL: https://mock.clerk.dev/.well-known/jwks.json
+          CLERK_WEBHOOK_SECRET: whsec_test
+          CLERK_AUDIENCE: test-audience
+          CLERK_ISSUER: https://mock.clerk.dev
+          TEAM_MEMBERS_COUNT: 4
+          DJANGO_SETTINGS_MODULE: core.settings.dev
+        run: |
+          python manage.py check
+          python manage.py migrate
+          pytest -q --cov=apps --cov-report=term-missing --cov-fail-under=60

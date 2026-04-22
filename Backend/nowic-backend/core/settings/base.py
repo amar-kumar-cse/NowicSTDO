@@ -108,6 +108,11 @@ CORS_ALLOWED_ORIGINS = [
     o.strip() for o in os.getenv('ALLOWED_ORIGINS', '').split(',') if o.strip()
 ]
 TRUST_X_FORWARDED_FOR = os.getenv('TRUST_X_FORWARDED_FOR', 'False') == 'True'
+
+if TRUST_X_FORWARDED_FOR:
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    USE_X_FORWARDED_HOST = True
+
 CORS_ALLOW_METHODS = ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS']
 CORS_ALLOW_HEADERS = ['content-type', 'authorization', 'x-requested-with']
 CORS_ALLOW_CREDENTIALS = False

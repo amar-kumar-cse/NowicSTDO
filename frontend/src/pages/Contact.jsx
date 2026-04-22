@@ -7,6 +7,7 @@ import { api } from '../lib/api';
 import { useApi } from '../hooks/useApi';
 import LoadingSpinner from '../components/LoadingSpinner';
 import ErrorMessage from '../components/ErrorMessage';
+import { brand } from '../data/content';
 
 const promise = [
   { icon: Clock, text: 'Response within 24 hours' },

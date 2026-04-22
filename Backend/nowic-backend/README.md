@@ -14,7 +14,11 @@ Built with **Django 5**, **Django Ninja**, **PostgreSQL (Supabase)**, and **Cler
 | API | Django Ninja 1.x (OpenAPI auto-docs) |
 | Database | PostgreSQL via Supabase |
 | Auth | Clerk JWT (RS256 / HttpBearer) |
+| Cache / Queue | Redis + Celery + django-celery-beat |
 | Email | Django SMTP (Gmail App Password) |
+| Media | Cloudinary |
+| Static Files | WhiteNoise |
+| Error Tracking | Sentry |
 | Deploy | Railway.app + Gunicorn |
 
 ---
@@ -23,25 +27,39 @@ Built with **Django 5**, **Django Ninja**, **PostgreSQL (Supabase)**, and **Cler
 
 ```
 nowic-backend/
-├── core/                   # Django project config
+├── core/                    # Django project config
 │   ├── settings/
-│   │   ├── base.py         # Shared settings
-│   │   ├── dev.py          # Development overrides
-│   │   └── prod.py         # Production hardening
-│   ├── api.py              # NinjaAPI root + router wiring
-│   └── urls.py             # URL conf
+│   │   ├── base.py          # Shared settings (all environments)
+│   │   ├── dev.py           # Development overrides (SQLite, console email)
+│   │   └── prod.py          # Production hardening
+│   ├── api.py               # NinjaAPI root + router wiring
+│   ├── celery.py            # Celery app + beat schedule
+│   └── urls.py              # URL conf
 ├── apps/
-│   ├── users/              # Clerk webhook sync → UserProfile
-│   ├── public/             # Services, portfolio, contact, stats
-│   ├── crm/                # Admin-only leads + projects
-│   └── booking/            # Slot availability + appointments
+│   ├── users/               # Clerk webhook sync → UserProfile
+│   ├── public/              # Services, portfolio, contact form, stats
+│   ├── crm/                 # Admin-only leads + projects management
+│   ├── booking/             # Slot availability + appointments
+│   ├── notifications/       # In-app notification system
+│   ├── analytics/           # Revenue, lead, booking, and growth analytics
+│   ├── audit/               # Immutable audit log (who did what, when)
+│   ├── client/              # Client-facing dashboard, projects, invoices
+│   └── apikeys/             # API key issuance and verification
 ├── shared/
-│   ├── auth.py             # ClerkAuth, get_admin_user, get_current_user
-│   ├── email.py            # Transactional email helpers
-│   ├── exceptions.py       # Custom exceptions + Ninja handlers
-│   ├── pagination.py       # Generic queryset paginator
-│   └── ratelimit.py        # Cache-based rate limiter
+│   ├── auth.py              # ClerkAuth, APIKeyAuth, get_admin_user, get_current_user
+│   ├── audit.py             # AuditAction enum + log_action helper
+│   ├── cache.py             # cache_response decorator
+│   ├── email.py             # Transactional email helpers
+│   ├── exceptions.py        # Custom exceptions + Ninja handlers
+│   ├── logging.py           # log_security_event helper
+│   ├── middleware.py        # RequestIDMiddleware
+│   ├── pagination.py        # Generic queryset paginator
+│   ├── ratelimit.py         # Cache-based rate limiter + get_client_ip
+│   ├── sanitize.py          # Input sanitization helpers
+│   └── search.py            # Portfolio full-text search
+├── tests/                   # Pytest test suite
 ├── .env.example
+├── Makefile
 ├── requirements.txt
 └── Procfile
 ```
@@ -52,7 +70,7 @@ nowic-backend/
 
 ### Prerequisites
 - Python 3.11+
-- PostgreSQL database (Supabase free tier works)
+- PostgreSQL database (Supabase free tier works) — or use SQLite for dev
 - Clerk account (for JWT + webhooks)
 
 ### 1. Clone & enter the project
@@ -67,7 +85,7 @@ cd nowic-backend
 ```bash
 python -m venv venv
 
-# Windows
+# Windows PowerShell
 venv\Scripts\activate
 
 # macOS / Linux
@@ -86,20 +104,7 @@ pip install -r requirements.txt
 cp .env.example .env
 ```
 
-Open `.env` and fill in all values:
-
-| Variable | Description |
-|---|---|
-| `SECRET_KEY` | Django secret key (generate with `python -c "import secrets; print(secrets.token_hex(50))"`) |
-| `DATABASE_URL` | PostgreSQL connection string from Supabase |
-| `CLERK_JWKS_URL` | From Clerk dashboard → API Keys → Advanced |
-| `CLERK_WEBHOOK_SECRET` | From Clerk dashboard → Webhooks |
-| `CLERK_AUDIENCE` | Expected JWT audience from Clerk |
-| `CLERK_ISSUER` | Expected JWT issuer URL from Clerk |
-| `EMAIL_HOST_USER` | Gmail address |
-| `EMAIL_HOST_PASSWORD` | Gmail App Password (not your account password) |
-| `ADMIN_EMAIL` | Where contact/lead notifications go |
-| `TEAM_MEMBERS_COUNT` | Homepage stats value for team members |
+Open `.env` and fill in all values. See the **Environment Variables** table below.
 
 ### 5. Set settings module
 
@@ -110,6 +115,8 @@ $env:DJANGO_SETTINGS_MODULE = "core.settings.dev"
 # macOS / Linux
 export DJANGO_SETTINGS_MODULE=core.settings.dev
 ```
+
+> **Dev shortcut:** `core.settings.dev` automatically switches to SQLite and console email — no Supabase or SMTP needed locally.
 
 ### 6. Run migrations
 
@@ -143,9 +150,102 @@ make qa
 ```
 
 This runs:
-- `python manage.py check`
-- `flake8` + `isort --check-only`
-- full test suite (`pytest -q`)
+- `python manage.py check` — Django system checks
+- `flake8 . --count --statistics` — linting
+- `isort --check-only .` — import order
+- `pytest -q` — full test suite
+
+---
+
+## Environment Variables
+
+| Variable | Required | Description |
+|---|---|---|
+| `SECRET_KEY` | ✅ | Django secret key — generate with `python -c "import secrets; print(secrets.token_hex(50))"` |
+| `DEBUG` | ✅ | `True` for dev, `False` for prod |
+| `DJANGO_SETTINGS_MODULE` | ✅ | `core.settings.dev` or `core.settings.prod` |
+| `DATABASE_URL` | ✅ | PostgreSQL connection string (e.g. from Supabase) |
+| `CLERK_JWKS_URL` | ✅ | From Clerk Dashboard → API Keys → Advanced |
+| `CLERK_WEBHOOK_SECRET` | ✅ | From Clerk Dashboard → Webhooks → Signing Secret |
+| `CLERK_AUDIENCE` | ⚠️ | Expected JWT audience — skip verification if empty (not for prod) |
+| `CLERK_ISSUER` | ⚠️ | Expected JWT issuer URL — skip verification if empty (not for prod) |
+| `TRUST_X_FORWARDED_FOR` | ⚠️ | `True` on Railway / behind nginx proxy; `False` locally |
+| `ALLOWED_HOSTS` | ✅ | Comma-separated hostnames, e.g. `your-app.railway.app` |
+| `ALLOWED_ORIGINS` | ✅ | Comma-separated CORS origins, e.g. `https://nowicstudio.in` |
+| `EMAIL_HOST` | ✅ | SMTP host, default `smtp.gmail.com` |
+| `EMAIL_PORT` | ✅ | SMTP port, default `587` |
+| `EMAIL_HOST_USER` | ✅ | Gmail address |
+| `EMAIL_HOST_PASSWORD` | ✅ | Gmail App Password (not your Google account password) |
+| `ADMIN_EMAIL` | ✅ | Where contact/lead notifications are sent |
+| `DEFAULT_FROM_EMAIL` | ✅ | Sender address shown in outgoing emails |
+| `TEAM_MEMBERS_COUNT` | ✅ | Homepage stats value for "Team Members" |
+| `CLOUDINARY_CLOUD_NAME` | ⚠️ | Cloudinary cloud name (for media uploads) |
+| `CLOUDINARY_API_KEY` | ⚠️ | Cloudinary API key |
+| `CLOUDINARY_API_SECRET` | ⚠️ | Cloudinary API secret |
+| `REDIS_URL` | ⚠️ | Redis connection URL — falls back to in-memory cache if empty |
+| `SENTRY_DSN` | ⚠️ | Sentry DSN for error tracking (prod recommended) |
+
+> ✅ = always required · ⚠️ = optional/conditional
+
+---
+
+## API Overview
+
+### Public (no auth required)
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `POST` | `/api/webhook/clerk/` | Clerk user lifecycle sync (Svix signature required) |
+| `GET` | `/api/v1/public/services/` | List active service offerings |
+| `GET` | `/api/v1/public/services/{slug}/` | Single service by slug |
+| `GET` | `/api/v1/public/portfolio/` | List portfolio projects (filter: featured, category, search) |
+| `GET` | `/api/v1/public/portfolio/{slug}/` | Single portfolio project |
+| `POST` | `/api/v1/public/contact/` | Contact form submission (rate-limited: 3/hour per IP) |
+| `GET` | `/api/v1/public/stats/` | Homepage statistics |
+| `GET` | `/api/v1/booking/services/` | List bookable services |
+| `GET` | `/api/v1/booking/slots/` | Available time slots for a date + service |
+| `GET` | `/health/` | Health check (DB, cache, Celery) |
+
+### User JWT required (any authenticated Clerk user)
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `POST` | `/api/v1/booking/book/` | Book an appointment |
+| `GET` | `/api/v1/booking/mine/` | List my appointments (filter by status) |
+| `POST` | `/api/v1/booking/cancel/{id}/` | Cancel an appointment |
+| `GET` | `/api/v1/client/dashboard/` | Client dashboard summary |
+| `GET` | `/api/v1/client/projects/` | Client's projects |
+| `GET` | `/api/v1/client/projects/{id}/updates/` | Project update timeline |
+| `GET` | `/api/v1/client/invoices/` | Client's invoices |
+| `GET` | `/api/v1/notifications/` | In-app notifications |
+| `POST` | `/api/v1/notifications/mark-all-read/` | Mark all notifications as read |
+| `GET` | `/api/v1/notifications/unread-count/` | Unread notification count |
+
+### Admin JWT required (role = admin)
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET / POST` | `/api/v1/crm/leads/` | List (paginated) / create leads |
+| `GET / PATCH / DELETE` | `/api/v1/crm/leads/{id}/` | Get / update / soft-delete a lead |
+| `GET` | `/api/v1/crm/projects/` | List all projects |
+| `PATCH` | `/api/v1/crm/projects/{id}/` | Update project status / fields |
+| `GET / PATCH` | `/api/v1/crm/submissions/` | List / update contact submissions |
+| `PATCH` | `/api/v1/crm/submissions/{id}/` | Update single submission |
+| `GET` | `/api/v1/crm/stats/` | CRM dashboard stats |
+| `GET` | `/api/v1/admin/dashboard/` | Admin dashboard overview |
+| `GET` | `/api/v1/admin/me/` | Current admin profile |
+| `GET` | `/api/v1/admin/users/` | List all users |
+| `PATCH` | `/api/v1/admin/users/{id}/` | Update user role / fields |
+| `GET` | `/api/v1/admin/search/` | Global search across leads/projects |
+| `GET` | `/api/v1/admin/audit-logs/` | Immutable audit log |
+| `GET` | `/api/v1/analytics/revenue/` | Revenue analytics |
+| `GET` | `/api/v1/analytics/leads/` | Lead funnel analytics |
+| `GET` | `/api/v1/analytics/bookings/` | Booking analytics |
+| `GET` | `/api/v1/analytics/growth/` | Growth trend data |
+| `GET / POST` | `/api/v1/admin/api-keys/` | List / issue API keys |
+| `DELETE` | `/api/v1/admin/api-keys/{id}/` | Revoke an API key |
+
+Full interactive docs: `http://localhost:8000/api/docs` (dev only)
 
 ---
 
@@ -155,7 +255,7 @@ This runs:
 
 ```bash
 git add .
-git commit -m "initial backend"
+git commit -m "production release"
 git push origin main
 ```
 
@@ -176,7 +276,7 @@ DATABASE_URL=postgresql://...
 CLERK_JWKS_URL=...
 CLERK_WEBHOOK_SECRET=...
 CLERK_AUDIENCE=...
-CLERK_ISSUER=...
+CLERK_ISSUER=https://your-domain.clerk.accounts.dev
 ALLOWED_HOSTS=your-app.railway.app
 ALLOWED_ORIGINS=https://nowicstudio.in,http://localhost:5173
 TRUST_X_FORWARDED_FOR=True
@@ -185,6 +285,8 @@ EMAIL_HOST_PASSWORD=...
 ADMIN_EMAIL=...
 DEFAULT_FROM_EMAIL=...
 TEAM_MEMBERS_COUNT=4
+SENTRY_DSN=...
+REDIS_URL=redis://...
 DJANGO_SETTINGS_MODULE=core.settings.prod
 ```
 
@@ -206,20 +308,22 @@ railway run python manage.py createsuperuser
 
 ## Deployment Checklist
 
-Use this for every production release.
+Use this before every production release.
 
 ### Pre-deploy
 
 ```bash
-python manage.py check
-python -m pytest -q
+make qa
 ```
 
 Confirm:
-- `CLERK_AUDIENCE` and `CLERK_ISSUER` are set in prod env
-- `ALLOWED_HOSTS` has only real domains (no wildcard)
-- `TRUST_X_FORWARDED_FOR=True` only when behind trusted proxy
-- `TEAM_MEMBERS_COUNT` is configured as expected
+- `CLERK_AUDIENCE` and `CLERK_ISSUER` are set in prod env (JWT will validate both)
+- `TRUST_X_FORWARDED_FOR=True` is set — Railway sits behind a proxy
+- `ALLOWED_HOSTS` has only real domains (no wildcard `*`)
+- `SENTRY_DSN` is configured for error tracking
+- `REDIS_URL` is set if Celery tasks are in use
+- `CLOUDINARY_*` keys are set if media uploads are active
+- `DEBUG=False` in production
 
 ### Deploy
 
@@ -230,44 +334,67 @@ railway run python manage.py migrate
 
 ### Post-deploy Smoke Tests
 
-Check these endpoints:
-- `GET /api/health/`
-- `GET /api/v1/public/services/`
-- `GET /api/v1/public/stats/`
-- `GET /api/v1/booking/slots/?date=2099-01-01&service_id=<id>`
+```bash
+# Health check
+GET /health/
 
-Verify:
-- Booking slots are service-scoped
-- CRM/public stats and services return fresh data after admin updates
-- Clerk-protected endpoints return 401 for invalid/expired tokens
+# Public content
+GET /api/v1/public/services/
+GET /api/v1/public/stats/
+
+# Booking slots (service-scoped)
+GET /api/v1/booking/slots/?date=2099-01-01&service_id=1
+
+# Contact form
+POST /api/v1/public/contact/
+{
+  "name": "Smoke Test",
+  "email": "test@example.com",
+  "project_type": "Other",
+  "message": "Smoke test submission"
+}
+```
+
+Verify after deploy:
+- Booking slots are service-scoped (different services have independent slot availability)
+- Clerk-protected endpoints return `401` for invalid/expired tokens
+- Admin endpoints return `403` for non-admin users
+- Contact form rate limit triggers after 3 requests per IP per hour
 
 ### Rollback Plan
 
-If issue appears after deploy:
+If an issue appears after deploy:
 
-1. Roll back app version in Railway to previous stable release.
-2. Re-run smoke tests on rolled-back version.
-3. If migration introduced incompatible schema assumptions, deploy hotfix code that supports both old/new schema before running forward-only migration changes.
-4. Keep backup of `DATABASE_URL` snapshots before high-risk schema changes.
+1. Roll back app version in Railway to the previous stable release.
+2. Re-run smoke tests on the rolled-back version.
+3. If a migration introduced incompatible schema changes, deploy a hotfix that supports both old and new schema before running forward-only migrations.
+4. Keep `DATABASE_URL` snapshots before high-risk schema changes.
 
 ---
 
-## API Overview
+## Celery
 
-| Prefix | Auth | Description |
+### Run worker locally
+
+```bash
+celery -A core worker --loglevel=info
+```
+
+### Run beat scheduler (periodic tasks)
+
+```bash
+celery -A core beat --loglevel=info --scheduler django_celery_beat.schedulers:DatabaseScheduler
+```
+
+### Scheduled tasks
+
+| Task | Schedule | Description |
 |---|---|---|
-| `POST /api/webhook/clerk/` | Svix sig | Clerk user lifecycle sync |
-| `GET /api/v1/public/services/` | None | Active service offerings |
-| `GET /api/v1/public/portfolio/` | None | Portfolio projects |
-| `POST /api/v1/public/contact/` | None | Contact form (rate-limited) |
-| `GET /api/v1/public/stats/` | None | Homepage statistics |
-| `GET /api/v1/crm/leads/` | Admin JWT | CRM lead list |
-| `GET /api/v1/crm/stats/` | Admin JWT | Full dashboard stats |
-| `GET /api/v1/booking/slots/` | None | Available time slots |
-| `POST /api/v1/booking/book/` | User JWT | Book an appointment |
-| `GET /api/v1/booking/mine/` | User JWT | User's appointments |
+| `apps.crm.tasks.send_followup_reminders` | Daily at 9:00 AM UTC | Sends follow-up reminder emails for active leads |
+| `apps.booking.tasks.send_24hr_reminders` | Daily at 10:00 AM UTC | Sends 24-hour booking reminder emails to clients |
+| `apps.analytics.tasks.snapshot_today` | Daily at 11:55 PM UTC | Saves nightly analytics snapshot to the database |
 
-Full interactive docs: `/api/docs`
+> Without Redis/Celery configured, these tasks will not run. All other API functionality remains unaffected.
 
 ---
 
@@ -284,5 +411,5 @@ Full interactive docs: `/api/docs`
 
 1. Google Account → Security → **2-Step Verification** (must be ON)
 2. Google Account → Security → **App Passwords**
-3. Create app password for "Mail" → copy the 16-char password
-4. Set as `EMAIL_HOST_PASSWORD` (not your Google account password)
+3. Create app password for "Mail" → copy the 16-character password
+4. Set as `EMAIL_HOST_PASSWORD` in `.env` (not your Google account password)

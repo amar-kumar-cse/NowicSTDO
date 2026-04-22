@@ -98,7 +98,7 @@ def create_lead(request: HttpRequest, payload: LeadIn) -> dict:
         action=AuditAction.LEAD_CREATED,
         resource_type='lead',
         resource_id=lead.id,
-        new_value=LeadOut.from_orm(lead).dict(),
+        new_value=LeadOut.from_orm(lead).model_dump(mode='json'),
         ip=request.META.get('REMOTE_ADDR'),
         user_agent=request.META.get('HTTP_USER_AGENT', ''),
     )
@@ -128,7 +128,7 @@ def update_lead(request: HttpRequest, lead_id: int, payload: LeadUpdate) -> dict
     except Lead.DoesNotExist:
         raise NotFound(f'Lead #{lead_id} not found')
 
-    old_data = LeadOut.from_orm(lead).dict()
+    old_data = LeadOut.from_orm(lead).model_dump(mode='json')
     previous_status = lead.status
 
     update_data = payload.dict(exclude_none=True)
@@ -173,7 +173,7 @@ def update_lead(request: HttpRequest, lead_id: int, payload: LeadUpdate) -> dict
         resource_type='lead',
         resource_id=lead.id,
         old_value=old_data,
-        new_value=LeadOut.from_orm(lead).dict(),
+        new_value=LeadOut.from_orm(lead).model_dump(mode='json'),
         ip=request.META.get('REMOTE_ADDR'),
         user_agent=request.META.get('HTTP_USER_AGENT', ''),
     )
@@ -191,7 +191,7 @@ def delete_lead(request: HttpRequest, lead_id: int) -> dict:
     except Lead.DoesNotExist:
         raise NotFound(f'Lead #{lead_id} not found')
 
-    old_data = LeadOut.from_orm(lead).dict()
+    old_data = LeadOut.from_orm(lead).model_dump(mode='json')
     lead.is_active = False
     lead.save(update_fields=['is_active'])
 

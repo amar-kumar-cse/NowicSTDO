@@ -23,7 +23,7 @@ from apps.public.schemas import (
     SiteContentOut,
 )
 from shared.exceptions import NotFound, RateLimited
-from shared.ratelimit import contact_limiter
+from shared.ratelimit import contact_limiter, get_client_ip
 from shared.email import send_contact_confirmation, send_contact_notification
 from shared.cache import cache_response
 from shared.sanitize import sanitize_string, sanitize_email
@@ -35,13 +35,6 @@ logger = logging.getLogger(__name__)
 
 router = Router(tags=["Public"])
 
-
-def _get_client_ip(request: HttpRequest) -> str:
-    """Extract real client IP, honouring X-Forwarded-For for proxied deployments."""
-    forwarded_for = request.META.get("HTTP_X_FORWARDED_FOR")
-    if settings.TRUST_X_FORWARDED_FOR and forwarded_for:
-        return forwarded_for.split(",")[0].strip()
-    return request.META.get("REMOTE_ADDR", "0.0.0.0")
 
 
 # ─── Services ────────────────────────────────────────────────────────────────
@@ -149,7 +142,7 @@ def submit_contact(request: HttpRequest, payload: ContactIn):
     5. Send notification email to admin
     """
     # 1. Rate limiting
-    ip = _get_client_ip(request)
+    ip = get_client_ip(request)
     rl = contact_limiter.check(ip)
     if not rl["allowed"]:
         log_security_event('Rate limit exceeded', ip, details='contact form')
@@ -191,7 +184,7 @@ def submit_contact(request: HttpRequest, payload: ContactIn):
             email=email,
             phone=phone,
             source="inbound",
-            notes=f"Message: {message}\nBudget: {budget}\nPhone: {phone}",
+            notes=message,
         )
     except (DatabaseError, DjangoValidationError) as exc:
         logger.error("Failed to create CRM lead from contact form: %s", exc)

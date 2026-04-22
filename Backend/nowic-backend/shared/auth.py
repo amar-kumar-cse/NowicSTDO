@@ -5,6 +5,7 @@ Clerk JWT authentication for Django Ninja using HttpBearer.
 Fetches JWKS from Clerk and caches for 1 hour.
 """
 import logging
+import os
 from typing import Optional
 
 import jwt
@@ -43,10 +44,6 @@ class ClerkAuth(HttpBearer):
             return {}
 
     def authenticate(self, request, token: str) -> Optional[str]:
-        if not settings.CLERK_AUDIENCE or not settings.CLERK_ISSUER:
-            logger.error("CLERK_AUDIENCE and CLERK_ISSUER must be configured")
-            return None
-
         jwks = self._get_jwks()
         if not jwks:
             return None
@@ -63,13 +60,24 @@ class ClerkAuth(HttpBearer):
             if signing_key_obj is None:
                 logger.debug("No matching key found in JWKS for kid=%s", kid)
                 return None
+
+            # Conditionally verify audience and issuer based on env vars.
+            # If either is empty, skip that verification (dev-friendly).
+            clerk_audience = os.getenv("CLERK_AUDIENCE", "").strip()
+            clerk_issuer = os.getenv("CLERK_ISSUER", "").strip()
+
+            decode_options = {
+                "verify_aud": bool(clerk_audience),
+                "verify_iss": bool(clerk_issuer),
+            }
+
             payload = jwt.decode(
                 token,
                 signing_key_obj.key,
                 algorithms=["RS256"],
-                audience=settings.CLERK_AUDIENCE,
-                issuer=settings.CLERK_ISSUER,
-                options={"verify_aud": True, "verify_iss": True},
+                audience=clerk_audience or None,
+                issuer=clerk_issuer or None,
+                options=decode_options,
             )
             return payload.get("sub")
         except jwt.ExpiredSignatureError:

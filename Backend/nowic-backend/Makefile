@@ -1,4 +1,4 @@
-.PHONY: run test test-all lint format migrate shell superuser make-admin check qa
+.PHONY: run test test-all lint format migrate shell superuser make-admin qa
 
 run:
 	python manage.py runserver
@@ -10,11 +10,8 @@ test-all:
 	pytest -q
 
 lint:
-	flake8 .
+	flake8 . --count --statistics
 	isort --check-only .
-
-check:
-	python manage.py check
 
 format:
 	black .
@@ -33,4 +30,8 @@ superuser:
 make-admin:
 	python manage.py make_admin
 
-qa: check lint test-all
+qa:
+	python manage.py check
+	flake8 . --count --statistics
+	isort --check-only .
+	pytest -q

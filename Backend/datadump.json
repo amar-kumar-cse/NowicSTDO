@@ -1,0 +1,718 @@
+[
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$720000$j7KevQ6a0pSnzvvCLIfQaJ$6GuyqgxHls98Jej1yrFg1D09MGtcvruSZyzsAxlYNTs=",
+        "last_login": "2026-07-12T09:19:15.968Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "nowicstdo@gmail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-04-23T19:11:42.141Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "ge5cwp9w2elbwqqqj9qziyc1xdmcs6u5",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2pCZ0kF06d4zEIYBqRpISrsy3l2bdKHb_977L-XDuhS_9jT7SdRZoTr8bhziI9UNyD3UW9Ox1WWeWG-K3mnX1ybpedndv4MSevnWYBlGIcuDEw7JhmNkiSfIo2U2QITZJAYnGCGTReuQBwI2URCZRL0_9m84OA:1wiqLD:bhucTHku3ToNqhKHRJ4mfvVMHRtqAvBYOX5rK15y3Wk",
+        "expire_date": "2026-07-26T09:19:15.995Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "xt3z53rczybabh4ihp7npidr7b2yoisw",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hCgwBSX7j0DmSmDVA0kpV0Z765NutDtf-_9l4i4rSVunZc4J3EWWpx-N8LpwXUH6Y711uTU6rrMJHdFHrTLa0v8vBzu30HBXr61J88ZwWgAZvLKaT-MpC1oi0nRqMgHbS0RoM-DGoJxrCgkAxlcVizeH9MoN2w:1wFzTC:0nqRP6Mk0_eWO8QQjI1jOQe1PFSHyoK6DmTYTuQEjzc",
+        "expire_date": "2026-05-07T19:12:14.595Z"
+    }
+},
+{
+    "model": "public.serviceoffering",
+    "pk": 1,
+    "fields": {
+        "name": "MVP Development",
+        "slug": "mvp-development",
+        "tagline": "Turn Ideas Into Products",
+        "description": "Validate, build, and scale your product idea with a lean, production-ready MVP shipped in days — not months.",
+        "features": [
+            "Market-fit Strategy",
+            "Rapid Prototyping",
+            "Scalable Foundation"
+        ],
+        "icon_name": "Rocket",
+        "price_starting": "75000.00",
+        "delivery_days": 14,
+        "is_active": true,
+        "order": 1
+    }
+},
+{
+    "model": "public.serviceoffering",
+    "pk": 2,
+    "fields": {
+        "name": "Business Websites",
+        "slug": "business-websites",
+        "tagline": "Your Digital Storefront",
+        "description": "Premium websites built to convert — with blazing speed, killer UI, and seamless CMS integrations.",
+        "features": [
+            "Conversion-Focused Design",
+            "SEO-Optimised",
+            "Performance Score 95+"
+        ],
+        "icon_name": "Building2",
+        "price_starting": "35000.00",
+        "delivery_days": 10,
+        "is_active": true,
+        "order": 2
+    }
+},
+{
+    "model": "public.serviceoffering",
+    "pk": 3,
+    "fields": {
+        "name": "AI Web Apps",
+        "slug": "ai-web-apps",
+        "tagline": "Intelligence Built-In",
+        "description": "Embed cutting-edge AI — chatbots, smart dashboards, AI assistants — directly into your product stack.",
+        "features": [
+            "LLM Integration",
+            "Smart Automation",
+            "Custom AI Pipelines"
+        ],
+        "icon_name": "Bot",
+        "price_starting": "120000.00",
+        "delivery_days": 21,
+        "is_active": true,
+        "order": 3
+    }
+},
+{
+    "model": "public.serviceoffering",
+    "pk": 4,
+    "fields": {
+        "name": "Admin Dashboards",
+        "slug": "admin-dashboards",
+        "tagline": "Total Control Centre",
+        "description": "Build powerful admin panels with real-time analytics, CRM logic, and role-based access from day one.",
+        "features": [
+            "Real-Time Analytics",
+            "Role-Based Access",
+            "CRM & Data Management"
+        ],
+        "icon_name": "LayoutDashboard",
+        "price_starting": "65000.00",
+        "delivery_days": 12,
+        "is_active": true,
+        "order": 4
+    }
+},
+{
+    "model": "public.serviceoffering",
+    "pk": 5,
+    "fields": {
+        "name": "SaaS Platforms",
+        "slug": "saas-platforms",
+        "tagline": "Build Once. Scale Forever.",
+        "description": "End-to-end SaaS architectures with auth, billing, subscription flows, and multi-tenant infrastructure.",
+        "features": [
+            "Multi-Tenant Setup",
+            "Stripe Billing",
+            "Auth & RBAC"
+        ],
+        "icon_name": "Globe",
+        "price_starting": "180000.00",
+        "delivery_days": 30,
+        "is_active": true,
+        "order": 5
+    }
+},
+{
+    "model": "public.serviceoffering",
+    "pk": 6,
+    "fields": {
+        "name": "API & Backend",
+        "slug": "api-backend",
+        "tagline": "Solid Foundations",
+        "description": "Battle-tested REST & GraphQL APIs with clean architecture, caching layers, and thorough documentation.",
+        "features": [
+            "REST & GraphQL",
+            "Caching Strategy",
+            "Full Documentation"
+        ],
+        "icon_name": "Code2",
+        "price_starting": "55000.00",
+        "delivery_days": 9,
+        "is_active": true,
+        "order": 6
+    }
+},
+{
+    "model": "public.sitecontent",
+    "pk": 1,
+    "fields": {
+        "section": "services",
+        "data": [
+            {
+                "id": "mvp-development",
+                "icon": "Rocket",
+                "title": "Custom Software ",
+                "headline": "Turn Ideas Into Products",
+                "description": "Validate, build, and scale your product idea with a lean, production-ready Software shipped in days — not months.",
+                "features": [
+                    "Market-fit Strategy",
+                    "Rapid Prototyping",
+                    "Scalable Foundation"
+                ],
+                "price_starting": "",
+                "delivery_days": "",
+                "image_url": "/media/services/15f4904b42f1.jpg",
+                "color": "rgba(52,232,161,0.15)"
+            },
+            {
+                "id": "ab3c15a4-b990-4be1-85d4-e09e6277bd1a",
+                "icon": "Globe",
+                "title": "Mobile App Development ",
+                "headline": "Fast, scalable mobile apps.",
+                "description": "We build fast, secure, and scalable Flutter apps with modern UI, clean architecture, and seamless backend integration.",
+                "features": [
+                    "Flutter (Android & iOS)",
+                    "Payment Gateway",
+                    "Post-launch Support"
+                ],
+                "price_starting": "",
+                "delivery_days": "",
+                "image_url": "/media/services/d5b44271a160.png",
+                "color": "rgba(52,232,161,0.15)"
+            },
+            {
+                "id": "business-websites",
+                "icon": "Building2",
+                "title": "Business Websites",
+                "headline": "Your Digital Storefront",
+                "description": "Premium websites built to convert — with blazing speed, killer UI, and seamless CMS integrations.",
+                "features": [
+                    "Conversion-Focused Design",
+                    "SEO-Optimised",
+                    "Performance Score 95+"
+                ],
+                "price_starting": "",
+                "delivery_days": "",
+                "image_url": "/media/services/edba3a3ce032.jpg",
+                "color": "rgba(31,200,125,0.12)"
+            },
+            {
+                "id": "ai-web-apps",
+                "icon": "Bot",
+                "title": "AI Solution ",
+                "headline": "Intelligence Built-In",
+                "description": "Embed cutting-edge AI — chatbots, smart dashboards, AI assistants — directly into your product stack.",
+                "features": [
+                    "LLM Integration",
+                    "Smart Automation",
+                    "Custom AI Pipelines"
+                ],
+                "price_starting": "",
+                "delivery_days": "",
+                "image_url": "/media/services/a653aac8f629.png",
+                "color": "rgba(52,232,161,0.12)"
+            },
+            {
+                "id": "admin-dashboards",
+                "icon": "LayoutDashboard",
+                "title": "Admin Dashboards",
+                "headline": "Total Control Centre",
+                "description": "Build powerful admin panels with real-time analytics, CRM logic, and role-based access from day one.",
+                "features": [
+                    "Real-Time Analytics",
+                    "Role-Based Access",
+                    "CRM & Data Management"
+                ],
+                "price_starting": "",
+                "delivery_days": "",
+                "image_url": "/media/services/ad7f5f2a837b.png",
+                "color": "rgba(14,165,96,0.12)"
+            },
+            {
+                "id": "saas-platforms",
+                "icon": "Globe",
+                "title": "UI/UX",
+                "headline": "Pixel-Perfect Designs. Seamless User Experiences.",
+                "description": "Modern, user-centric UI/UX designs for apps and web platforms.  interactive prototypes, and component-ready layouts built to increase conversions.",
+                "features": [
+                    "Multi-Tenant Setup",
+                    "Stripe Billing",
+                    "Auth & RBAC"
+                ],
+                "price_starting": "",
+                "delivery_days": "",
+                "image_url": "/media/services/dd0cfcf9fc8a.png",
+                "color": "rgba(95,255,192,0.1)"
+            },
+            {
+                "id": "api-backend",
+                "icon": "Code2",
+                "title": "API & Backend",
+                "headline": "Solid Foundations",
+                "description": "Battle-tested REST & GraphQL APIs with clean architecture, caching layers, and thorough documentation.",
+                "features": [
+                    "REST & GraphQL",
+                    "Caching Strategy",
+                    "Full Documentation"
+                ],
+                "price_starting": "",
+                "delivery_days": "",
+                "image_url": "/media/services/e16ec54354ab.png",
+                "color": "rgba(31,200,125,0.08)"
+            }
+        ],
+        "created_at": "2026-04-22T21:02:31.741Z",
+        "updated_at": "2026-07-14T02:01:04.977Z"
+    }
+},
+{
+    "model": "public.sitecontent",
+    "pk": 2,
+    "fields": {
+        "section": "whyUs",
+        "data": [
+            {
+                "id": "d7943a3f-0986-46b7-8758-287b91898d88",
+                "icon": "Rocket",
+                "title": "Rapid Development",
+                "desc": "High-performing MVPs built and deployed within a 5-10 day window."
+            },
+            {
+                "id": "9dbdf2ad-0ed6-4d78-9136-b980582a20ee",
+                "icon": "Bot",
+                "title": "AI-Powered Full-Stack",
+                "desc": "Robust systems built using Django, React, and seamless AI integrations."
+            },
+            {
+                "id": "4edaecfb-3d8b-458a-af8b-fcd5d802070a",
+                "icon": "Layers",
+                "title": "Conversion-Focused UI/UX",
+                "desc": "Component-ready, pixel-perfect layouts designed for seamless user experiences."
+            }
+        ],
+        "created_at": "2026-07-13T22:03:01.407Z",
+        "updated_at": "2026-07-14T08:57:39.151Z"
+    }
+},
+{
+    "model": "public.sitecontent",
+    "pk": 3,
+    "fields": {
+        "section": "teamValues",
+        "data": [
+            {
+                "id": "8f33abe0-2b31-41ef-9425-eae915f0e4ac",
+                "text": "4"
+            }
+        ],
+        "created_at": "2026-07-13T22:03:01.452Z",
+        "updated_at": "2026-07-14T08:57:39.180Z"
+    }
+},
+{
+    "model": "public.sitecontent",
+    "pk": 4,
+    "fields": {
+        "section": "milestones",
+        "data": [
+            {
+                "id": "37ff285d-e00a-4a13-8f2b-0c5fed4c38e1",
+                "year": "2026",
+                "title": "Studio Founded",
+                "desc": "Nowic Studio was born from a belief: great products deserve great execution."
+            },
+            {
+                "id": "c3bce3b0-e927-47d7-bb78-aa260e1ad713",
+                "year": "2026",
+                "title": "10+ & Growing",
+                "desc": "Serving founders and enterprises across India and globally."
+            }
+        ],
+        "created_at": "2026-07-13T22:03:01.489Z",
+        "updated_at": "2026-07-14T08:57:39.207Z"
+    }
+},
+{
+    "model": "public.sitecontent",
+    "pk": 5,
+    "fields": {
+        "section": "stats",
+        "data": [
+            {
+                "icon": "Gauge",
+                "value": "5",
+                "label": "Services Offered",
+                "link_type": "manual"
+            },
+            {
+                "icon": "Users",
+                "value": "4",
+                "label": "Experts Onboard",
+                "link_type": "manual"
+            },
+            {
+                "icon": "Gauge",
+                "value": "5",
+                "label": "Projects Delivered",
+                "link_type": "manual"
+            },
+            {
+                "icon": "Gauge",
+                "value": "2",
+                "label": "Happy Clients",
+                "link_type": "manual"
+            }
+        ],
+        "created_at": "2026-07-13T22:07:28.219Z",
+        "updated_at": "2026-07-14T09:02:54.337Z"
+    }
+},
+{
+    "model": "public.sitecontent",
+    "pk": 6,
+    "fields": {
+        "section": "highlights",
+        "data": [
+            {
+                "icon": "Zap",
+                "value": "5",
+                "label": "Services Offered",
+                "link_type": "manual"
+            },
+            {
+                "icon": "Users",
+                "value": "4",
+                "label": "Team Members",
+                "link_type": "manual"
+            },
+            {
+                "icon": "Layers",
+                "value": "5",
+                "label": "Projects Delivered",
+                "link_type": "manual"
+            },
+            {
+                "icon": "Trophy",
+                "value": "2",
+                "label": "Happy Clients",
+                "link_type": "manual"
+            }
+        ],
+        "created_at": "2026-07-13T22:07:40.591Z",
+        "updated_at": "2026-07-14T09:02:54.430Z"
+    }
+},
+{
+    "model": "public.sitecontent",
+    "pk": 7,
+    "fields": {
+        "section": "brand",
+        "data": {
+            "email": "nowicstdo@gmail.com",
+            "phone": "8804385786"
+        },
+        "created_at": "2026-07-13T22:16:38.406Z",
+        "updated_at": "2026-07-13T23:47:17.339Z"
+    }
+},
+{
+    "model": "public.sitecontent",
+    "pk": 8,
+    "fields": {
+        "section": "quickTasks",
+        "data": [
+            {
+                "id": 1,
+                "text": "Confirm booking times for new clients",
+                "completed": false
+            },
+            {
+                "id": 2,
+                "text": "Review catering services page copy",
+                "completed": true
+            },
+            {
+                "id": 3,
+                "text": "Ship premium glassmorphism updates to production",
+                "completed": true
+            }
+        ],
+        "created_at": "2026-07-13T23:14:16.677Z",
+        "updated_at": "2026-07-13T23:14:57.309Z"
+    }
+},
+{
+    "model": "public.sitecontent",
+    "pk": 9,
+    "fields": {
+        "section": "faqs",
+        "data": [
+            {
+                "id": "84a3dca0-aa95-4531-a21d-0aef337a9462",
+                "q": "How long does it take to build a Software?",
+                "a": "We typically build and deliver fully functional, launch-ready within 5 to 10 days, depending on the project scope."
+            },
+            {
+                "id": "326b85a6-d5de-4228-8f70-25faa63f0825",
+                "q": "Do you sign NDAs and who owns the source code?",
+                "a": "Yes, we sign standard NDAs before discussing any project details. Once the project is delivered, you get 100% ownership of the clean source code and system architecture."
+            },
+            {
+                "id": "144bb342-3648-4078-9fa9-d41b34b390d9",
+                "q": "What tech stack do you use for development?",
+                "a": "We specialize in modern, scalable tech stacks including Django, React, Clerk authentication, Stripe billing, and high-performance AI integrations."
+            },
+            {
+                "id": "0d1130c3-9fab-4444-b78e-88b4be47f6b0",
+                "q": "Do you provide post-launch support?",
+                "a": "Yes, we provide full support after deployment to ensure your platform runs smoothly, tracks analytics correctly, and scales flawlessly."
+            }
+        ],
+        "created_at": "2026-07-14T09:00:50.872Z",
+        "updated_at": "2026-07-14T09:00:50.872Z"
+    }
+},
+{
+    "model": "public.contactsubmission",
+    "pk": 1,
+    "fields": {
+        "name": "syed",
+        "email": "saqulainprivate@gmail.com",
+        "service_interest": null,
+        "project_type": "Custom Software",
+        "message": "hlo myyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+        "phone": "",
+        "budget": "under_50k",
+        "status": "new",
+        "priority": "medium",
+        "replied_at": null,
+        "reply_note": "",
+        "ip_address": "127.0.0.1",
+        "submitted_at": "2026-07-13T20:13:54.569Z"
+    }
+},
+{
+    "model": "crm.lead",
+    "pk": 1,
+    "fields": {
+        "company_name": "Direct Inquiry",
+        "founder_name": "syed",
+        "email": "saqulainprivate@gmail.com",
+        "phone": "",
+        "source": "inbound",
+        "status": "sent",
+        "notes": "hlo myyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+        "is_active": true,
+        "created_at": "2026-07-13T20:13:54.578Z",
+        "updated_at": "2026-07-13T20:13:54.578Z"
+    }
+},
+{
+    "model": "booking.bookingservice",
+    "pk": 4,
+    "fields": {
+        "name": "MVP Development",
+        "slug": "mvp-development",
+        "price": "75000.00",
+        "duration_minutes": 60,
+        "description": "Validate, build, and scale your product idea with a lean, production-ready MVP shipped in days — not months.",
+        "is_active": false
+    }
+},
+{
+    "model": "booking.bookingservice",
+    "pk": 5,
+    "fields": {
+        "name": "Business Websites",
+        "slug": "business-websites",
+        "price": "0.00",
+        "duration_minutes": 60,
+        "description": "Premium websites built to convert — with blazing speed, killer UI, and seamless CMS integrations.",
+        "is_active": true
+    }
+},
+{
+    "model": "booking.bookingservice",
+    "pk": 6,
+    "fields": {
+        "name": "AI Web Apps",
+        "slug": "ai-web-apps",
+        "price": "0.00",
+        "duration_minutes": 60,
+        "description": "Embed cutting-edge AI — chatbots, smart dashboards, AI assistants — directly into your product stack.",
+        "is_active": true
+    }
+},
+{
+    "model": "booking.bookingservice",
+    "pk": 7,
+    "fields": {
+        "name": "Admin Dashboards",
+        "slug": "admin-dashboards",
+        "price": "0.00",
+        "duration_minutes": 60,
+        "description": "Build powerful admin panels with real-time analytics, CRM logic, and role-based access from day one.",
+        "is_active": true
+    }
+},
+{
+    "model": "booking.bookingservice",
+    "pk": 8,
+    "fields": {
+        "name": "SaaS Platforms",
+        "slug": "saas-platforms",
+        "price": "180000.00",
+        "duration_minutes": 60,
+        "description": "End-to-end SaaS architectures with auth, billing, subscription flows, and multi-tenant infrastructure.",
+        "is_active": false
+    }
+},
+{
+    "model": "booking.bookingservice",
+    "pk": 9,
+    "fields": {
+        "name": "API & Backend",
+        "slug": "api-backend",
+        "price": "0.00",
+        "duration_minutes": 60,
+        "description": "Battle-tested REST & GraphQL APIs with clean architecture, caching layers, and thorough documentation.",
+        "is_active": true
+    }
+},
+{
+    "model": "booking.bookingservice",
+    "pk": 10,
+    "fields": {
+        "name": "Custom Software ",
+        "slug": "custom-software",
+        "price": "0.00",
+        "duration_minutes": 60,
+        "description": "Validate, build, and scale your product idea with a lean, production-ready Software shipped in days — not months.",
+        "is_active": true
+    }
+},
+{
+    "model": "booking.bookingservice",
+    "pk": 11,
+    "fields": {
+        "name": "UI/UX",
+        "slug": "ui-ux",
+        "price": "0.00",
+        "duration_minutes": 60,
+        "description": "Modern, user-centric UI/UX designs for apps and web platforms.  interactive prototypes, and component-ready layouts built to increase conversions.",
+        "is_active": true
+    }
+},
+{
+    "model": "booking.bookingservice",
+    "pk": 12,
+    "fields": {
+        "name": "Mobile App Development",
+        "slug": "mobile-app-development",
+        "price": "0.00",
+        "duration_minutes": 60,
+        "description": "Custom iOS and Android applications built with React Native.",
+        "is_active": true
+    }
+},
+{
+    "model": "booking.appointment",
+    "pk": 1,
+    "fields": {
+        "clerk_user_id": "dev_anonymous_user",
+        "service": 6,
+        "date": "2026-04-25",
+        "time_slot": "10:00:00",
+        "email": null,
+        "phone": null,
+        "status": "confirmed",
+        "cancellation_reason": "",
+        "booked_at": "2026-04-23T20:25:14.821Z"
+    }
+},
+{
+    "model": "audit.auditlog",
+    "pk": 1,
+    "fields": {
+        "actor_clerk_id": "dev_anonymous_user",
+        "actor_email": "",
+        "action": "booking_created",
+        "resource_type": "appointment",
+        "resource_id": "1",
+        "old_value": null,
+        "new_value": {
+            "service_id": 6,
+            "date": "2026-04-25",
+            "time_slot": "10:00:00",
+            "status": "confirmed"
+        },
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0",
+        "timestamp": "2026-04-23T20:25:14.838Z"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+        "action_time": "2026-04-23T19:47:12.162Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "booking",
+            "bookingservice"
+        ],
+        "object_id": "1",
+        "object_repr": "MVP Development",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+        "action_time": "2026-04-23T19:47:28.028Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "booking",
+            "bookingservice"
+        ],
+        "object_id": "2",
+        "object_repr": "AI Web Apps",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+        "action_time": "2026-04-23T19:47:44.038Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "booking",
+            "bookingservice"
+        ],
+        "object_id": "3",
+        "object_repr": "SaaS Platforms",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+}
+]

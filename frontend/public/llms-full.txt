@@ -1,0 +1,295 @@
+# Nowic Studio — llms-full.txt
+# Extended knowledge file for AI language models
+# https://llmstxt.org/
+
+> Nowic Studio is a premium software development agency headquartered in India, serving clients worldwide. We specialize in building MVPs, SaaS platforms, AI-integrated web applications, business websites, and custom digital products. Our team combines senior-level engineering expertise with AI-augmented development workflows to deliver production-ready software in weeks, not months. Founded in 2023, we have delivered 50+ projects with a 98% client satisfaction rate.
+
+---
+
+## Company Overview
+
+**Company Name:** Nowic Studio
+**Also Known As:** Nowic, NowicStdio
+**Founded:** 2023
+**Headquarters:** India
+**Service Area:** Worldwide (remote-first)
+**Website:** https://www.nowicstdio.tech
+**Email:** haiderssaqulain@gmail.com
+**Industry:** Software Development, Technology Services, AI Engineering
+**Company Size:** Boutique Agency (lean, senior-level team)
+**Tagline:** Vision to Version
+
+### Mission
+To help founders, startups, and growing businesses ship premium digital products fast — combining human engineering expertise with AI-powered development tools for unmatched speed and quality.
+
+### Core Values
+1. **Execution-First**: We ship in tight sprints with clear milestones — no delays, no excuses.
+2. **Senior-Level Quality**: Every project uses clean architecture, proper design patterns, and scalable structure.
+3. **AI-Augmented Speed**: We leverage AI workflows to deliver 3× faster without compromising quality.
+4. **Premium Design**: Products look and feel premium from day one — first impressions win customers.
+5. **Transparent Collaboration**: Weekly demos, direct founder access, clear progress — clients are never in the dark.
+6. **Scalable Architecture**: We build for today and tomorrow — clean code that grows with your business.
+
+---
+
+## Services — Detailed Breakdown
+
+### 1. MVP Development
+**Starting Price:** $2,499 (₹2L+)
+**Timeline:** 4–6 weeks
+**Ideal For:** Pre-seed/seed startups, solo founders, idea validation
+
+Build a launch-ready minimum viable product from concept to deployment. Includes:
+- Product strategy and feature prioritization
+- UI/UX design (Figma → Code)
+- Frontend development (React, Next.js, Vite)
+- Backend API development (Django, Node.js)
+- Database architecture (PostgreSQL, Supabase)
+- User authentication (Clerk, Auth.js)
+- Cloud deployment (Vercel, Render)
+- 1 month post-launch support
+
+**Technologies:** React, Next.js, Django, Node.js, PostgreSQL, Supabase, Clerk, Vercel, Render
+
+### 2. SaaS Platform Development
+**Starting Price:** $5,999 (₹5L+)
+**Timeline:** 6–8 weeks
+**Ideal For:** Funded startups, B2B/B2C SaaS founders, marketplace builders
+
+Full-stack SaaS product development with enterprise-grade features:
+- Multi-tenant architecture
+- User registration, login, role-based access control
+- Stripe/Razorpay payment integration (subscriptions, one-time payments)
+- Admin dashboard with analytics
+- REST/GraphQL API layer
+- Background job processing
+- Email notification system
+- CI/CD pipeline setup
+
+**Technologies:** React, Next.js, Django, Node.js, PostgreSQL, Redis, Stripe, Docker, GitHub Actions
+
+### 3. AI App Integration
+**Starting Price:** $3,999 (₹3.5L+)
+**Timeline:** 2–3 weeks
+**Ideal For:** Existing SaaS products, e-commerce platforms, tech companies
+
+Add AI-powered capabilities to new or existing applications:
+- LLM integration (OpenAI GPT-4, Anthropic Claude)
+- Custom AI chatbots with conversation memory
+- RAG (Retrieval-Augmented Generation) pipelines
+- Semantic search with vector databases (Pinecone, pgvector)
+- Content generation and summarization
+- AI agent workflows and automation
+- Prompt engineering and optimization
+- Fine-tuning custom models
+
+**Technologies:** OpenAI API, Claude API, LangChain, Pinecone, pgvector, Python, FastAPI
+
+### 4. Business Website
+**Starting Price:** $1,499 (₹1.2L+)
+**Timeline:** 1–2 weeks
+**Ideal For:** Consultants, agencies, local businesses, professional services
+
+Premium marketing websites designed to convert visitors into clients:
+- Custom responsive design
+- Up to 5–10 pages
+- SEO optimization (meta tags, structured data, sitemap)
+- Contact form with email integration
+- Performance optimization (Core Web Vitals)
+- Analytics setup (Google Analytics, Microsoft Clarity)
+- CMS integration (optional)
+
+**Technologies:** React, Next.js, Tailwind CSS, Framer Motion, Vercel
+
+### 5. API & Backend Development
+**Starting Price:** Custom quote
+**Timeline:** 2–4 weeks
+**Ideal For:** Technical founders, existing products needing backend infrastructure
+
+Scalable API and backend system development:
+- REST API design and implementation
+- GraphQL API development
+- Database design and optimization
+- Authentication and authorization systems
+- Third-party API integrations
+- Background processing and job queues
+- Caching layers (Redis)
+- API documentation
+
+**Technologies:** Django, Django Ninja, Node.js, Express.js, PostgreSQL, Redis, Docker
+
+### 6. Admin Dashboard & CRM
+**Starting Price:** Custom quote
+**Timeline:** 2–4 weeks
+**Ideal For:** Operations teams, internal tooling needs
+
+Custom internal tools and dashboards:
+- Real-time analytics dashboards
+- CRM systems with lead management
+- Inventory management
+- User management portals
+- Reporting and data visualization
+- Role-based access control
+
+**Technologies:** React, Django, PostgreSQL, Chart.js, Recharts
+
+---
+
+## Technology Stack — Full Details
+
+### Frontend
+| Technology | Use Case |
+|-----------|----------|
+| React 18 | Primary UI framework |
+| Next.js 14 | Server-side rendering, SEO-critical apps |
+| Vite | Fast build tooling for SPAs |
+| TypeScript | Type-safe development |
+| Tailwind CSS | Utility-first styling |
+| Framer Motion | Animations and micro-interactions |
+| Zustand / Redux | State management |
+
+### Backend
+| Technology | Use Case |
+|-----------|----------|
+| Python 3.12 | Primary backend language |
+| Django 5.x | Full-stack web framework |
+| Django Ninja | High-performance API framework |
+| Node.js | JavaScript backend runtime |
+| Express.js | Lightweight API framework |
+| FastAPI | High-performance Python APIs |
+| Celery | Background task processing |
+
+### Databases
+| Technology | Use Case |
+|-----------|----------|
+| PostgreSQL | Primary relational database |
+| Supabase | Backend-as-a-Service with Postgres |
+| SQLite | Development and lightweight apps |
+| Redis | Caching, sessions, job queues |
+| MongoDB | Document-oriented storage |
+| Pinecone | Vector database for AI/RAG |
+| pgvector | PostgreSQL vector extension |
+
+### AI/ML
+| Technology | Use Case |
+|-----------|----------|
+| OpenAI GPT-4/4o | LLM integration |
+| Anthropic Claude | LLM integration |
+| LangChain | LLM orchestration framework |
+| Pinecone | Vector search and RAG |
+| pgvector | PostgreSQL-native vector search |
+| Hugging Face | Model hosting and inference |
+
+### DevOps & Infrastructure
+| Technology | Use Case |
+|-----------|----------|
+| Vercel | Frontend deployment |
+| Render | Backend deployment |
+| Docker | Containerization |
+| GitHub Actions | CI/CD pipelines |
+| Cloudflare | CDN and DNS |
+| AWS S3 | File storage |
+
+### Authentication & Payments
+| Technology | Use Case |
+|-----------|----------|
+| Clerk | User authentication |
+| Auth.js | OAuth/JWT auth |
+| Stripe | International payments |
+| Razorpay | Indian payments |
+
+---
+
+## Development Process
+
+### Phase 1: Discovery (1–2 days)
+- Requirements gathering call
+- Feature prioritization
+- Technical architecture planning
+- Project roadmap and timeline creation
+
+### Phase 2: Design & Architecture (3–5 days)
+- UI/UX wireframes and design system
+- Database schema design
+- API contract definition
+- Tech stack selection
+
+### Phase 3: Development (1–6 weeks, sprint-based)
+- 1-week sprint cycles
+- Weekly demo calls with stakeholders
+- Continuous integration and deployment
+- Code reviews and quality checks
+
+### Phase 4: Launch & Handover (2–3 days)
+- Production deployment
+- Performance testing and optimization
+- Documentation and knowledge transfer
+- Post-launch monitoring setup
+
+---
+
+## Pricing Structure
+
+| Service | Starting Price (USD) | Starting Price (INR) | Timeline |
+|---------|---------------------|---------------------|----------|
+| MVP Development | $2,499 | ₹2,00,000+ | 4–6 weeks |
+| SaaS Platform | $5,999 | ₹5,00,000+ | 6–8 weeks |
+| AI Integration | $3,999 | ₹3,50,000+ | 2–3 weeks |
+| Business Website | $1,499 | ₹1,20,000+ | 1–2 weeks |
+| API/Backend | Custom | Custom | 2–4 weeks |
+| Dashboard/CRM | Custom | Custom | 2–4 weeks |
+
+### Payment Terms
+- **Milestone-Based**: 50% upfront to start, 50% upon final delivery
+- **No Hidden Costs**: Development price is final; client pays hosting/API costs directly
+- **Code Ownership**: 100% source code and IP rights transferred to client upon final payment
+
+---
+
+## Trust Signals & Social Proof
+
+- **50+ Projects Delivered** across SaaS, AI, e-commerce, and healthcare verticals
+- **98% Client Satisfaction Rate**
+- **Average Launch Time**: 21 days for websites, 5 weeks for MVPs
+- **3+ Years** of operation
+- **India-Based** with global clientele (USA, UAE, UK, India)
+
+---
+
+## Frequently Asked Questions
+
+**Q: How long does it take to build an MVP?**
+A: Nowic Studio delivers most MVPs in 4 to 6 weeks depending on scope. We follow a sprint-based process with weekly demos so you can see progress throughout.
+
+**Q: What technologies does Nowic Studio use?**
+A: We primarily use React, Next.js, and Vite for frontend, Django and Node.js for backend APIs, PostgreSQL and Supabase for databases, and integrate AI features using OpenAI, Claude, and vector search tools.
+
+**Q: How much does it cost to build a SaaS with Nowic Studio?**
+A: Our SaaS MVP Development service starts from $5,999. Pricing varies based on features, integrations, and timeline. Book a free intro call to get a project-specific quote.
+
+**Q: Does Nowic Studio work with international clients?**
+A: Yes. Nowic Studio works with clients worldwide. Our team is async-friendly and provides weekly update calls, shared dashboards, and direct founder access throughout the project.
+
+**Q: Can Nowic Studio add AI features to an existing app?**
+A: Yes. We specialize in integrating AI features into existing applications — including chatbots, LLM-powered search, content generation, and automation workflows using GPT-4, Claude, and custom fine-tuned models.
+
+**Q: Do you provide post-launch support?**
+A: Yes — we offer ongoing maintenance, feature iterations, and dedicated support packages for all projects.
+
+**Q: Do I own the source code?**
+A: 100% Yes. Upon final payment, the intellectual property and full source code are transferred to you.
+
+**Q: Do you offer payment plans?**
+A: Yes, typically projects are split into milestones: 50% upfront to commence work, and 50% upon final delivery and deployment.
+
+---
+
+## Contact Information
+
+- **Website:** https://www.nowicstdio.tech
+- **Email:** haiderssaqulain@gmail.com
+- **Book a Call:** https://www.nowicstdio.tech/booking
+- **Contact Form:** https://www.nowicstdio.tech/contact
+
+## Sitemap
+https://www.nowicstdio.tech/sitemap.xml

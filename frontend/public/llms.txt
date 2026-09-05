@@ -1,0 +1,49 @@
+# Nowic Studio
+
+> Nowic Studio is a premium software development agency that builds MVPs, SaaS platforms, AI-integrated web applications, and custom digital products for startups and growing businesses worldwide. We combine senior-level engineering with AI-augmented workflows to ship products in weeks, not months.
+
+## About Us
+
+Nowic Studio is a boutique software engineering agency founded in 2023. We partner with early-stage founders, funded startups, and SMBs to transform product ideas into polished, scalable software — shipped fast.
+
+- Execution-First Process: Sprint-based delivery with weekly demos and clear milestones.
+- AI-Augmented Speed: We leverage AI development tools to deliver 3x faster without sacrificing quality.
+- Senior-Level Code Quality: Clean architecture, tested code, scalable infrastructure from day one.
+- Premium UI/UX: Every product looks and feels premium — because first impressions win customers.
+
+## Services
+
+- MVP Development: Build a launch-ready minimum viable product in 4-6 weeks. Starting from $2,499.
+- SaaS Platform Development: Full-stack SaaS products with multi-tenancy, user authentication, role-based access, Stripe payment integration, admin dashboards, and API layers. Starting from $5,999.
+- AI App Integration: Integrate LLMs (GPT-4, Claude), chatbots, semantic search (RAG pipelines), vector databases, content generation, and AI agent workflows into existing or new applications. Starting from $3,999.
+- Business Website: Premium marketing websites designed to convert visitors into clients. Starting from $1,499.
+- API & Backend Development: Scalable REST/GraphQL APIs, microservices, background job processing.
+- Admin Dashboard & CRM: Custom internal tools, analytics dashboards, CRM systems, and operational admin panels.
+
+## Tech Stack
+
+- Frontend: React, Next.js, Vite, TypeScript, Tailwind CSS, Framer Motion
+- Backend: Python, Django, Django Ninja, Node.js, Express.js
+- Databases: PostgreSQL, Supabase, SQLite, Redis, MongoDB
+- AI/ML: OpenAI GPT-4, Anthropic Claude, LangChain, Pinecone, pgvector, RAG pipelines
+- Authentication: Clerk, Auth.js, JWT, OAuth
+- Payments: Stripe, Razorpay
+- DevOps: Render, Vercel, Docker, GitHub Actions, CI/CD
+
+## Pricing
+
+MVP Development starts at $2,499 (4-6 weeks).
+SaaS Platform starts at $5,999 (6-8 weeks).
+AI Integration starts at $3,999 (2-3 weeks).
+Business Website starts at $1,499 (1-2 weeks).
+
+All pricing is milestone-based with 50% upfront and 50% on delivery. 100% source code ownership transferred to client.
+
+## Contact
+
+- Email: haiderssaqulain@gmail.com
+- Website: [https://www.nowicstdio.tech](https://www.nowicstdio.tech)
+
+## Optional
+
+- Full documentation: [https://www.nowicstdio.tech/llms-full.txt](https://www.nowicstdio.tech/llms-full.txt)

@@ -1,0 +1,354 @@
+{
+  "react": {
+    "name": "React",
+    "category": "Frontend",
+    "tagline": "Our primary UI framework for building fast, interactive web applications.",
+    "description": "React is our go-to library for building dynamic user interfaces. We use React across all our services — from MVPs to SaaS platforms — because of its component-based architecture, massive ecosystem, and developer productivity.",
+    "usedFor": ["MVP Development", "Business Websites", "SaaS Platforms", "Admin Dashboards", "AI Web Apps"],
+    "whyWeUseIt": [
+      "Component-based architecture enables rapid, modular development",
+      "Virtual DOM ensures high performance even with complex UIs",
+      "Massive ecosystem of battle-tested libraries",
+      "Excellent developer tooling and debugging experience",
+      "Easy to find and onboard developers for long-term maintenance"
+    ],
+    "relatedTech": ["nextjs", "vite", "typescript", "tailwind-css", "framer-motion"],
+    "relatedServices": ["mvp-development", "business-websites", "saas-platforms", "admin-dashboards"]
+  },
+  "nextjs": {
+    "name": "Next.js",
+    "category": "Frontend",
+    "tagline": "Full-stack React framework for SEO-critical and server-rendered applications.",
+    "description": "When SEO matters or server-side rendering is needed, we reach for Next.js. It provides built-in routing, API routes, static generation, and edge deployment — making it ideal for marketing websites and SaaS products that need to rank well in search engines.",
+    "usedFor": ["Business Websites", "SaaS Platforms", "SEO-Critical Applications"],
+    "whyWeUseIt": [
+      "Server-side rendering and static generation for SEO",
+      "Built-in API routes eliminate the need for a separate backend for simple use cases",
+      "Automatic code splitting and image optimization",
+      "Seamless Vercel deployment with edge functions",
+      "File-based routing reduces boilerplate"
+    ],
+    "relatedTech": ["react", "typescript", "vercel", "tailwind-css"],
+    "relatedServices": ["business-websites", "saas-platforms"]
+  },
+  "vite": {
+    "name": "Vite",
+    "category": "Frontend",
+    "tagline": "Lightning-fast build tool for modern web development.",
+    "description": "Vite is our preferred build tool for React applications. It provides instant hot module replacement (HMR), blazing-fast builds, and a clean developer experience. We use Vite for all projects where Next.js SSR is not required.",
+    "usedFor": ["MVP Development", "Admin Dashboards", "AI Web Apps", "SPA Applications"],
+    "whyWeUseIt": [
+      "Near-instant dev server startup (10x faster than Webpack)",
+      "Lightning-fast hot module replacement",
+      "Optimized production builds with Rollup",
+      "First-class TypeScript and JSX support",
+      "Plugin ecosystem for any customization"
+    ],
+    "relatedTech": ["react", "typescript", "tailwind-css"],
+    "relatedServices": ["mvp-development", "admin-dashboards", "ai-web-apps"]
+  },
+  "typescript": {
+    "name": "TypeScript",
+    "category": "Frontend",
+    "tagline": "Type-safe JavaScript for maintainable, enterprise-grade codebases.",
+    "description": "TypeScript adds static typing to JavaScript, catching bugs at compile time rather than runtime. We use it on projects where long-term maintainability and team collaboration are critical.",
+    "usedFor": ["SaaS Platforms", "Enterprise Applications", "Complex Frontend Apps"],
+    "whyWeUseIt": [
+      "Catches bugs before runtime — fewer production issues",
+      "Excellent IDE support with autocompletion and refactoring",
+      "Self-documenting code through type definitions",
+      "Easier onboarding for new developers",
+      "Gradual adoption — can be added incrementally"
+    ],
+    "relatedTech": ["react", "nextjs", "vite", "nodejs"],
+    "relatedServices": ["saas-platforms", "admin-dashboards"]
+  },
+  "tailwind-css": {
+    "name": "Tailwind CSS",
+    "category": "Frontend",
+    "tagline": "Utility-first CSS framework for rapid, consistent UI development.",
+    "description": "Tailwind CSS allows us to build custom designs quickly without writing custom CSS files. Its utility-first approach ensures consistency across components and makes responsive design effortless.",
+    "usedFor": ["All Frontend Projects", "Rapid Prototyping", "Design Systems"],
+    "whyWeUseIt": [
+      "Build custom designs without leaving your HTML",
+      "Automatic purging of unused CSS for tiny bundle sizes",
+      "Built-in responsive design utilities",
+      "Consistent spacing, colors, and typography system",
+      "No naming conflicts or CSS specificity issues"
+    ],
+    "relatedTech": ["react", "nextjs", "vite"],
+    "relatedServices": ["mvp-development", "business-websites", "saas-platforms"]
+  },
+  "framer-motion": {
+    "name": "Framer Motion",
+    "category": "Frontend",
+    "tagline": "Production-ready animation library for React.",
+    "description": "Framer Motion powers all the smooth animations and micro-interactions across our projects. From page transitions to scroll-triggered reveals, it makes our UIs feel alive and premium.",
+    "usedFor": ["Premium UI/UX", "Page Transitions", "Micro-interactions", "Scroll Animations"],
+    "whyWeUseIt": [
+      "Declarative API that integrates naturally with React",
+      "Hardware-accelerated animations for 60fps performance",
+      "Built-in gesture recognition (drag, hover, tap)",
+      "Layout animations and shared element transitions",
+      "AnimatePresence for clean mount/unmount animations"
+    ],
+    "relatedTech": ["react", "tailwind-css"],
+    "relatedServices": ["business-websites", "mvp-development"]
+  },
+  "django": {
+    "name": "Django",
+    "category": "Backend",
+    "tagline": "Our primary full-stack Python framework for secure, rapid backend development.",
+    "description": "Django is our backend workhorse. Its \"batteries-included\" philosophy means authentication, admin panels, ORM, and security come built-in — letting us ship robust backends in days rather than weeks.",
+    "usedFor": ["SaaS Platforms", "Admin Dashboards", "API Development", "MVP Development"],
+    "whyWeUseIt": [
+      "Built-in admin panel saves weeks of development",
+      "Enterprise-grade security out of the box (CSRF, XSS, SQL injection protection)",
+      "Powerful ORM for complex database queries",
+      "Mature ecosystem with thousands of packages",
+      "Excellent for rapid prototyping without sacrificing quality"
+    ],
+    "relatedTech": ["django-ninja", "postgresql", "redis", "docker"],
+    "relatedServices": ["saas-platforms", "admin-dashboards", "api-backend", "mvp-development"]
+  },
+  "django-ninja": {
+    "name": "Django Ninja",
+    "category": "Backend",
+    "tagline": "High-performance API framework built on Django.",
+    "description": "Django Ninja combines Django's reliability with FastAPI-style async support and automatic OpenAPI documentation. We use it for all our REST API projects that need speed and documentation.",
+    "usedFor": ["REST API Development", "SaaS Backend APIs", "Microservices"],
+    "whyWeUseIt": [
+      "Automatic OpenAPI/Swagger documentation generation",
+      "Type-based request/response validation with Pydantic",
+      "Async support for high-concurrency endpoints",
+      "All of Django's ORM, auth, and security features",
+      "Significantly faster than Django REST Framework"
+    ],
+    "relatedTech": ["django", "postgresql", "redis"],
+    "relatedServices": ["api-backend", "saas-platforms"]
+  },
+  "nodejs": {
+    "name": "Node.js",
+    "category": "Backend",
+    "tagline": "JavaScript runtime for real-time, event-driven backend applications.",
+    "description": "Node.js is our choice for real-time applications, WebSocket servers, and JavaScript-heavy full-stack projects. Its non-blocking I/O model makes it ideal for chat systems, live dashboards, and high-concurrency APIs.",
+    "usedFor": ["Real-time Applications", "WebSocket Servers", "Full-Stack JavaScript Projects"],
+    "whyWeUseIt": [
+      "Non-blocking I/O for handling thousands of concurrent connections",
+      "Shared JavaScript across frontend and backend",
+      "npm — the largest package ecosystem in the world",
+      "Excellent for real-time features (WebSockets, SSE)",
+      "Fast development with Express or Fastify"
+    ],
+    "relatedTech": ["expressjs", "postgresql", "mongodb", "redis"],
+    "relatedServices": ["mvp-development", "api-backend", "saas-platforms"]
+  },
+  "expressjs": {
+    "name": "Express.js",
+    "category": "Backend",
+    "tagline": "Minimal, flexible Node.js web framework.",
+    "description": "Express.js is the most popular Node.js framework and our choice for lightweight API servers. When a project doesn't need Django's full feature set, Express provides a fast, unopinionated alternative.",
+    "usedFor": ["Lightweight APIs", "Microservices", "Full-Stack JavaScript Projects"],
+    "whyWeUseIt": [
+      "Minimal footprint — add only what you need",
+      "Massive middleware ecosystem",
+      "Battle-tested in production at scale",
+      "Easy to learn, fast to build with",
+      "Pairs perfectly with React for full-stack JS projects"
+    ],
+    "relatedTech": ["nodejs", "mongodb", "postgresql"],
+    "relatedServices": ["mvp-development", "api-backend"]
+  },
+  "postgresql": {
+    "name": "PostgreSQL",
+    "category": "Database",
+    "tagline": "Our primary relational database for production applications.",
+    "description": "PostgreSQL is the most advanced open-source relational database and our default choice for all projects. Its ACID compliance, JSON support, full-text search, and pgvector extension make it versatile enough for any application.",
+    "usedFor": ["SaaS Platforms", "MVP Development", "API Backends", "AI Applications (pgvector)"],
+    "whyWeUseIt": [
+      "Rock-solid ACID compliance for data integrity",
+      "Native JSON/JSONB support for flexible schemas",
+      "Full-text search without additional services",
+      "pgvector extension for AI/ML vector storage",
+      "Excellent performance at scale with proper indexing"
+    ],
+    "relatedTech": ["django", "nodejs", "supabase", "pgvector"],
+    "relatedServices": ["saas-platforms", "mvp-development", "api-backend", "admin-dashboards"]
+  },
+  "supabase": {
+    "name": "Supabase",
+    "category": "Database",
+    "tagline": "Open-source Firebase alternative built on PostgreSQL.",
+    "description": "Supabase provides a managed PostgreSQL database with real-time subscriptions, authentication, storage, and auto-generated APIs. We use it for rapid MVP development where speed-to-market is the top priority.",
+    "usedFor": ["Rapid MVP Development", "Real-time Applications", "Prototyping"],
+    "whyWeUseIt": [
+      "Instant REST and GraphQL APIs from your database schema",
+      "Built-in authentication with social logins",
+      "Real-time subscriptions out of the box",
+      "File storage with CDN delivery",
+      "All the power of PostgreSQL underneath"
+    ],
+    "relatedTech": ["postgresql", "react", "nextjs"],
+    "relatedServices": ["mvp-development"]
+  },
+  "redis": {
+    "name": "Redis",
+    "category": "Database",
+    "tagline": "In-memory data store for caching, sessions, and background jobs.",
+    "description": "Redis is our go-to for caching, session management, rate limiting, and background job queues. It dramatically improves application performance by reducing database load.",
+    "usedFor": ["Caching Layers", "Session Management", "Background Jobs", "Rate Limiting", "Real-time Features"],
+    "whyWeUseIt": [
+      "Sub-millisecond response times for cached data",
+      "Reliable background job processing with Celery/Bull",
+      "Built-in pub/sub for real-time features",
+      "Rate limiting for API protection",
+      "Session storage for scalable authentication"
+    ],
+    "relatedTech": ["django", "nodejs", "postgresql"],
+    "relatedServices": ["saas-platforms", "api-backend"]
+  },
+  "mongodb": {
+    "name": "MongoDB",
+    "category": "Database",
+    "tagline": "Document-oriented database for flexible, schema-less data.",
+    "description": "MongoDB is our choice when data structures are highly variable or when rapid iteration on data models is needed. Its flexible schema makes it ideal for early-stage products and content-heavy applications.",
+    "usedFor": ["Content Management", "Prototyping", "Flexible Schema Applications"],
+    "whyWeUseIt": [
+      "Flexible schema — iterate on data models without migrations",
+      "Natural JSON document storage",
+      "Horizontal scaling with sharding",
+      "Rich query language and aggregation pipeline",
+      "Atlas provides managed hosting with free tier"
+    ],
+    "relatedTech": ["nodejs", "expressjs"],
+    "relatedServices": ["mvp-development"]
+  },
+  "openai": {
+    "name": "OpenAI",
+    "category": "AI/ML",
+    "tagline": "GPT-4o integration for intelligent AI-powered applications.",
+    "description": "We integrate OpenAI's GPT-4o and embedding models to build AI features like chatbots, content generation, semantic search, and automated workflows. Our experience with prompt engineering ensures accurate, production-ready AI outputs.",
+    "usedFor": ["AI Chatbots", "Content Generation", "Semantic Search", "Automated Workflows"],
+    "whyWeUseIt": [
+      "State-of-the-art language understanding and generation",
+      "Powerful embedding models for semantic search",
+      "Function calling for structured AI outputs",
+      "Reliable API with high uptime",
+      "Extensive documentation and community support"
+    ],
+    "relatedTech": ["langchain", "pinecone", "pgvector"],
+    "relatedServices": ["ai-web-apps"]
+  },
+  "langchain": {
+    "name": "LangChain",
+    "category": "AI/ML",
+    "tagline": "LLM orchestration framework for building complex AI workflows.",
+    "description": "LangChain helps us build sophisticated AI applications by chaining together LLM calls, document retrieval, and custom tools. We use it for RAG (Retrieval-Augmented Generation) systems and multi-step AI workflows.",
+    "usedFor": ["RAG Systems", "AI Agents", "Document Q&A", "Multi-step AI Workflows"],
+    "whyWeUseIt": [
+      "Pre-built chains for common AI patterns (RAG, summarization, Q&A)",
+      "Document loaders for PDFs, web pages, databases",
+      "Memory management for conversational AI",
+      "Agent framework for autonomous AI workflows",
+      "Works with OpenAI, Claude, and other LLM providers"
+    ],
+    "relatedTech": ["openai", "pinecone", "pgvector"],
+    "relatedServices": ["ai-web-apps"]
+  },
+  "pinecone": {
+    "name": "Pinecone",
+    "category": "AI/ML",
+    "tagline": "Managed vector database for AI-powered semantic search.",
+    "description": "Pinecone stores and queries vector embeddings at scale. We use it for RAG applications where documents need to be semantically searched and retrieved for LLM context.",
+    "usedFor": ["Semantic Search", "RAG Applications", "Recommendation Systems"],
+    "whyWeUseIt": [
+      "Purpose-built for vector similarity search",
+      "Fully managed — no infrastructure to maintain",
+      "Sub-second query times even with millions of vectors",
+      "Metadata filtering for hybrid search",
+      "Serverless pricing model for cost efficiency"
+    ],
+    "relatedTech": ["openai", "langchain"],
+    "relatedServices": ["ai-web-apps"]
+  },
+  "vercel": {
+    "name": "Vercel",
+    "category": "DevOps",
+    "tagline": "Our primary frontend deployment platform.",
+    "description": "Vercel provides zero-config deployment for React and Next.js applications with global CDN, automatic HTTPS, and preview deployments for every pull request.",
+    "usedFor": ["Frontend Deployment", "Static Sites", "Next.js Applications"],
+    "whyWeUseIt": [
+      "Zero-config deployment from Git push",
+      "Global edge network for sub-200ms page loads",
+      "Automatic preview deployments for every branch",
+      "Built-in analytics and performance monitoring",
+      "Native Next.js support with edge functions"
+    ],
+    "relatedTech": ["react", "nextjs", "vite"],
+    "relatedServices": ["business-websites", "saas-platforms", "mvp-development"]
+  },
+  "docker": {
+    "name": "Docker",
+    "category": "DevOps",
+    "tagline": "Containerization for consistent, reproducible deployments.",
+    "description": "Docker ensures our applications run identically in development, staging, and production. We containerize all backend services for reliable, scalable deployments.",
+    "usedFor": ["Backend Deployment", "Consistent Environments", "Microservices"],
+    "whyWeUseIt": [
+      "Identical environments from dev to production",
+      "Easy horizontal scaling with container orchestration",
+      "Isolated dependencies — no version conflicts",
+      "Fast, reproducible builds",
+      "Works with any cloud provider"
+    ],
+    "relatedTech": ["django", "nodejs", "postgresql", "redis"],
+    "relatedServices": ["saas-platforms", "api-backend"]
+  },
+  "clerk": {
+    "name": "Clerk",
+    "category": "Auth & Payments",
+    "tagline": "Drop-in authentication with social logins and user management.",
+    "description": "Clerk provides pre-built authentication UI components, social login integrations, and user management dashboards. We use it to add production-ready auth to applications in hours, not weeks.",
+    "usedFor": ["User Authentication", "Social Logins", "User Management"],
+    "whyWeUseIt": [
+      "Pre-built UI components for sign-up, sign-in, and user profiles",
+      "Social login (Google, GitHub, etc.) with zero configuration",
+      "Built-in user management dashboard",
+      "React hooks for seamless integration",
+      "Multi-factor authentication and session management"
+    ],
+    "relatedTech": ["react", "nextjs"],
+    "relatedServices": ["saas-platforms", "mvp-development"]
+  },
+  "stripe": {
+    "name": "Stripe",
+    "category": "Auth & Payments",
+    "tagline": "Payment processing for SaaS subscriptions and one-time payments.",
+    "description": "Stripe handles all payment processing in our SaaS and e-commerce projects. From one-time payments to complex subscription billing with usage-based pricing, Stripe provides the infrastructure we need.",
+    "usedFor": ["Subscription Billing", "One-time Payments", "Invoicing", "Usage-based Pricing"],
+    "whyWeUseIt": [
+      "Industry-leading payment processing reliability",
+      "Pre-built Checkout and Customer Portal",
+      "Webhook-driven architecture for bulletproof order flows",
+      "Support for 135+ currencies",
+      "Built-in fraud detection and compliance"
+    ],
+    "relatedTech": ["nodejs", "django"],
+    "relatedServices": ["saas-platforms", "mvp-development"]
+  },
+  "razorpay": {
+    "name": "Razorpay",
+    "category": "Auth & Payments",
+    "tagline": "Indian payment gateway for UPI, cards, and wallets.",
+    "description": "For projects targeting the Indian market, Razorpay provides native UPI, card, and wallet payment processing with seamless integration and competitive transaction fees.",
+    "usedFor": ["Indian Market Payments", "UPI Integration", "Subscription Billing (India)"],
+    "whyWeUseIt": [
+      "Native UPI support — essential for Indian market",
+      "Simple integration with pre-built checkout",
+      "Automatic payment reconciliation",
+      "Subscription and recurring billing support",
+      "Competitive transaction fees for INR payments"
+    ],
+    "relatedTech": ["nodejs", "django"],
+    "relatedServices": ["saas-platforms", "mvp-development", "business-websites"]
+  }
+}

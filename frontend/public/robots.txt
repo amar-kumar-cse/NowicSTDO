@@ -1,0 +1,93 @@
+# ─── Nowic Studio — robots.txt ───
+# https://www.nowicstdio.tech/robots.txt
+
+User-agent: *
+Allow: /
+Sitemap: https://www.nowicstdio.tech/sitemap.xml
+
+# Block admin and private routes from indexing
+Disallow: /admin
+Disallow: /admin/
+Disallow: /dashboard
+Disallow: /review
+
+# ─── AI Search Engine Crawlers (GEO — Generative Engine Optimization) ───
+# We WANT AI search engines (ChatGPT Search, Perplexity, Claude, Gemini)
+# to index and cite Nowic Studio in their answers.
+
+# OpenAI — ChatGPT Search & Web Browsing
+User-agent: GPTBot
+Allow: /
+Disallow: /admin
+Disallow: /dashboard
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /admin
+Disallow: /dashboard
+
+# Anthropic — Claude Web Search
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin
+Disallow: /dashboard
+
+# Anthropic — Claude User Agent
+User-agent: anthropic-ai
+Allow: /
+Disallow: /admin
+Disallow: /dashboard
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin
+Disallow: /dashboard
+
+# Google — Gemini / AI Overviews
+User-agent: Google-Extended
+Allow: /
+
+# Microsoft — Bing Copilot
+User-agent: Bingbot
+Allow: /
+
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot
+Allow: /
+
+# Knowledge Graph & AI Training
+User-agent: Diffbot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: TrufflePig
+Allow: /
+
+User-agent: Cohere-ai
+Allow: /
+
+# ─── Block low-value scrapers ───
+User-agent: CCBot
+Disallow: /
+
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+# ─── LLM knowledge files ───
+# https://llmstxt.org/
+# Direct AI crawlers to our structured knowledge file
+# llms.txt: https://www.nowicstdio.tech/llms.txt
+# llms-full.txt: https://www.nowicstdio.tech/llms-full.txt
